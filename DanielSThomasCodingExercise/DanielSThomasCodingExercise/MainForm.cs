@@ -29,7 +29,9 @@ namespace DanielSThomasCodingExercise
       
         private void BtnAutoInput_Click(object sender, EventArgs e)
         {
-
+            userInput = txtManualInput.Text;
+            MessageBox.Show(CheckforDuplicates(userInput).ToString());
+            
         }
 
         //Methods
@@ -59,9 +61,28 @@ namespace DanielSThomasCodingExercise
             }
 
            
-            
+
 
         }
+        private int CheckforDuplicates(string input)
+        {
+            int duplicateCount = 0;
 
+
+            char firstChar = input[0];
+
+            char[] charArray = input.ToCharArray();
+
+
+            foreach(char ch in charArray)
+            {
+                if (ch == firstChar)
+                {
+                    duplicateCount++;
+                }
+            }
+
+            return duplicateCount;
+        }
     }
 }
