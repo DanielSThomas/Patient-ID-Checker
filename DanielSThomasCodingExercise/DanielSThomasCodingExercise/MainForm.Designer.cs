@@ -46,7 +46,7 @@
             this.btnManualInput.TabIndex = 0;
             this.btnManualInput.Text = "Validate ID";
             this.btnManualInput.UseVisualStyleBackColor = true;
-            this.btnManualInput.Click += new System.EventHandler(this.btnManualInput_Click);
+            this.btnManualInput.Click += new System.EventHandler(this.BtnManualInput_Click);
             // 
             // lblManual
             // 
@@ -63,7 +63,7 @@
             this.txtManualInput.Location = new System.Drawing.Point(26, 95);
             this.txtManualInput.Name = "txtManualInput";
             this.txtManualInput.Size = new System.Drawing.Size(312, 20);
-            this.txtManualInput.TabIndex = 2;        
+            this.txtManualInput.TabIndex = 2;
             // 
             // lblTitle
             // 
@@ -87,14 +87,14 @@
             // 
             // lblManualOutput
             // 
-            this.lblManualOutput.AutoSize = true;
             this.lblManualOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblManualOutput.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lblManualOutput.Location = new System.Drawing.Point(271, 128);
+            this.lblManualOutput.Location = new System.Drawing.Point(196, 128);
             this.lblManualOutput.Name = "lblManualOutput";
-            this.lblManualOutput.Size = new System.Drawing.Size(67, 29);
+            this.lblManualOutput.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblManualOutput.Size = new System.Drawing.Size(142, 29);
             this.lblManualOutput.TabIndex = 5;
-            this.lblManualOutput.Text = "Valid";
+            this.lblManualOutput.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblAuto
             // 
@@ -104,11 +104,10 @@
             this.lblAuto.Name = "lblAuto";
             this.lblAuto.Size = new System.Drawing.Size(155, 20);
             this.lblAuto.TabIndex = 6;
-            this.lblAuto.Text = "Automatic Validation";        
+            this.lblAuto.Text = "Automatic Validation";
             // 
             // lblAutoOutput
             // 
-            this.lblAutoOutput.AutoSize = true;
             this.lblAutoOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAutoOutput.ForeColor = System.Drawing.Color.Red;
             this.lblAutoOutput.Location = new System.Drawing.Point(191, 222);
@@ -121,6 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(365, 279);
             this.Controls.Add(this.lblAutoOutput);
             this.Controls.Add(this.lblAuto);
@@ -130,8 +130,10 @@
             this.Controls.Add(this.txtManualInput);
             this.Controls.Add(this.lblManual);
             this.Controls.Add(this.btnManualInput);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Patient ID Checker";
             this.ResumeLayout(false);
             this.PerformLayout();
 
