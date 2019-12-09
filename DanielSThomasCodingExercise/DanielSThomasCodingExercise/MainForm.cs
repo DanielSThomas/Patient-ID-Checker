@@ -94,6 +94,24 @@ namespace DanielSThomasCodingExercise
             return duplicateCount;
         }
 
+        private void ValidationAlgorithm()
+        {
+            //Get user input
+
+            //Split into char array and convert to int
+
+            //x weight then add values
+
+            //Devide by 12 and work remains
+
+            //12 - remains
+
+            //if final no = 10 or 12 return invalid
+            //if final no = 11 and userinput[9] == 0 return valid
+            //if final no = userinput[9] return valid
+        }
+
+
         private void ManualOutput(bool input,string message)
         {
             if(input == true)
