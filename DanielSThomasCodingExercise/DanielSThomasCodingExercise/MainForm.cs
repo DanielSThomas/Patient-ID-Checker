@@ -40,13 +40,13 @@ namespace DanielSThomasCodingExercise
             if(userInput.Length != 10)
             {
                 MessageBox.Show("Patient ID must be 10 digits long");
-                lblManualOutput.Text = "Invalid"; lblManualOutput.ForeColor = Color.Red;
+                ManualOutput(false);
                 return;
             }
             if(CheckforDuplicates(userInput) > 9)
             {
                 MessageBox.Show("Patient ID has too many duplicates");
-                lblManualOutput.Text = "Invalid"; lblManualOutput.ForeColor = Color.Red;
+                ManualOutput(false);
                 return;
             }
             else
@@ -57,18 +57,18 @@ namespace DanielSThomasCodingExercise
                     if(patientID < 0)
                     {
                         MessageBox.Show("Invalid Characters");
-                        lblManualOutput.Text = "Invalid"; lblManualOutput.ForeColor = Color.Red;
+                        ManualOutput(false);
                         return;
                     }
                 }
                 catch(FormatException)
                 {
                     MessageBox.Show("Invalid Characters");
-                    lblManualOutput.Text = "Invalid"; lblManualOutput.ForeColor = Color.Red;
+                    ManualOutput(false);
                     return;
                 }
-               
-                lblManualOutput.Text = "Valid"; lblManualOutput.ForeColor = Color.Green;
+
+                ManualOutput(true);
             }
 
            
@@ -94,6 +94,18 @@ namespace DanielSThomasCodingExercise
             }
 
             return duplicateCount;
+        }
+
+        private void ManualOutput(bool input)
+        {
+            if(input == true)
+            {
+                lblManualOutput.Text = "Valid"; lblManualOutput.ForeColor = Color.Green;            
+            }
+            if(input == false)
+            {
+                lblManualOutput.Text = "Invalid"; lblManualOutput.ForeColor = Color.Red;
+            }
         }
     }
 }
