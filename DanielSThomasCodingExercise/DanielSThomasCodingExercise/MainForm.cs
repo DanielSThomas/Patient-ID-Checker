@@ -39,14 +39,13 @@ namespace DanielSThomasCodingExercise
 
             if(userInput.Length != 10)
             {
-                MessageBox.Show("Patient ID must be 10 digits long");
-                ManualOutput(false);
+                
+                ManualOutput(false, "Patient ID must be 10 digits long");
                 return;
             }
             if(CheckforDuplicates(userInput) > 9)
-            {
-                MessageBox.Show("Patient ID has too many duplicates");
-                ManualOutput(false);
+            {            
+                ManualOutput(false, "Patient ID has too many duplicate digits");
                 return;
             }
             else
@@ -55,20 +54,19 @@ namespace DanielSThomasCodingExercise
                 {
                     long patientID = Int64.Parse(userInput);
                     if(patientID < 0)
-                    {
-                        MessageBox.Show("Invalid Characters");
-                        ManualOutput(false);
+                    {                      
+                        ManualOutput(false, "Invalid Characters");
                         return;
                     }
                 }
                 catch(FormatException)
                 {
-                    MessageBox.Show("Invalid Characters");
-                    ManualOutput(false);
+                    
+                    ManualOutput(false, "Invalid Characters");
                     return;
                 }
 
-                ManualOutput(true);
+                ManualOutput(true,"Valid ID");
             }
 
            
@@ -96,7 +94,7 @@ namespace DanielSThomasCodingExercise
             return duplicateCount;
         }
 
-        private void ManualOutput(bool input)
+        private void ManualOutput(bool input,string message)
         {
             if(input == true)
             {
@@ -105,6 +103,7 @@ namespace DanielSThomasCodingExercise
             if(input == false)
             {
                 lblManualOutput.Text = "Invalid"; lblManualOutput.ForeColor = Color.Red;
+                MessageBox.Show(message);
             }
         }
     }
