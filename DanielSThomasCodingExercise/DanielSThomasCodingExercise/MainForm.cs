@@ -29,9 +29,7 @@ namespace DanielSThomasCodingExercise
       
         private void BtnAutoInput_Click(object sender, EventArgs e)
         {
-            userInput = txtManualInput.Text;
-            MessageBox.Show(CheckforDuplicates(userInput).ToString());
-            
+                    
         }
 
         //Methods
@@ -42,6 +40,12 @@ namespace DanielSThomasCodingExercise
             if(userInput.Length != 10)
             {
                 MessageBox.Show("Patient ID must be 10 digits long");
+                lblManualOutput.Text = "Invalid"; lblManualOutput.ForeColor = Color.Red;
+                return;
+            }
+            if(CheckforDuplicates(userInput) > 9)
+            {
+                MessageBox.Show("Patient ID has too many duplicates");
                 lblManualOutput.Text = "Invalid"; lblManualOutput.ForeColor = Color.Red;
                 return;
             }
