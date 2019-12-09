@@ -16,28 +16,13 @@ namespace DanielSThomasCodingExercise
         {
             InitializeComponent();
         }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
+  
+        private void btnManualInput_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label2_Click(object sender, EventArgs e)
+      
+        private void BtnAutoInput_Click(object sender, EventArgs e)
         {
 
         }

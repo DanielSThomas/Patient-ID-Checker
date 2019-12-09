@@ -46,7 +46,7 @@
             this.btnManualInput.TabIndex = 0;
             this.btnManualInput.Text = "Validate ID";
             this.btnManualInput.UseVisualStyleBackColor = true;
-            this.btnManualInput.Click += new System.EventHandler(this.Button1_Click);
+            this.btnManualInput.Click += new System.EventHandler(this.btnManualInput_Click);
             // 
             // lblManual
             // 
@@ -63,8 +63,7 @@
             this.txtManualInput.Location = new System.Drawing.Point(26, 95);
             this.txtManualInput.Name = "txtManualInput";
             this.txtManualInput.Size = new System.Drawing.Size(312, 20);
-            this.txtManualInput.TabIndex = 2;
-            this.txtManualInput.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
+            this.txtManualInput.TabIndex = 2;        
             // 
             // lblTitle
             // 
@@ -84,6 +83,7 @@
             this.btnAutoInput.TabIndex = 4;
             this.btnAutoInput.Text = "Validate ID from file";
             this.btnAutoInput.UseVisualStyleBackColor = true;
+            this.btnAutoInput.Click += new System.EventHandler(this.BtnAutoInput_Click);
             // 
             // lblManualOutput
             // 
@@ -104,8 +104,7 @@
             this.lblAuto.Name = "lblAuto";
             this.lblAuto.Size = new System.Drawing.Size(155, 20);
             this.lblAuto.TabIndex = 6;
-            this.lblAuto.Text = "Automatic Validation";
-            this.lblAuto.Click += new System.EventHandler(this.Label1_Click);
+            this.lblAuto.Text = "Automatic Validation";        
             // 
             // lblAutoOutput
             // 
@@ -117,7 +116,6 @@
             this.lblAutoOutput.Size = new System.Drawing.Size(147, 29);
             this.lblAutoOutput.TabIndex = 7;
             this.lblAutoOutput.Text = "1/5 Valid IDs";
-            this.lblAutoOutput.Click += new System.EventHandler(this.Label2_Click);
             // 
             // MainForm
             // 
