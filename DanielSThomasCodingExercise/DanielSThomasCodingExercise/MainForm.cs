@@ -54,6 +54,12 @@ namespace DanielSThomasCodingExercise
                 try
                 {
                     long patientID = Int64.Parse(userInput);
+                    if(patientID < 0)
+                    {
+                        MessageBox.Show("Invalid Characters");
+                        lblManualOutput.Text = "Invalid"; lblManualOutput.ForeColor = Color.Red;
+                        return;
+                    }
                 }
                 catch(FormatException)
                 {
@@ -61,6 +67,7 @@ namespace DanielSThomasCodingExercise
                     lblManualOutput.Text = "Invalid"; lblManualOutput.ForeColor = Color.Red;
                     return;
                 }
+               
                 lblManualOutput.Text = "Valid"; lblManualOutput.ForeColor = Color.Green;
             }
 
