@@ -66,7 +66,15 @@ namespace DanielSThomasCodingExercise
                     return;
                 }
 
-                ManualOutput(true,"Valid ID");
+                if(ValidationAlgorithm(userInput) == true)
+                {
+                    ManualOutput(true, "Valid ID");
+                }
+                else
+                {
+                    ManualOutput(false, "ID Failled Advanced Validation Check");
+                }
+               
             }
 
            
@@ -94,21 +102,48 @@ namespace DanielSThomasCodingExercise
             return duplicateCount;
         }
 
-        private void ValidationAlgorithm()
+        private bool ValidationAlgorithm(string input)
         {
-            //Get user input
+            
+            int digit1 = Int32.Parse(input[0].ToString()) * 11;           
+            int digit2 = Int32.Parse(input[1].ToString()) * 10;
+            int digit3 = Int32.Parse(input[2].ToString()) * 9;
+            int digit4 = Int32.Parse(input[3].ToString()) * 8;
+            int digit5 = Int32.Parse(input[4].ToString()) * 7;
+            int digit6 = Int32.Parse(input[5].ToString()) * 6;
+            int digit7 = Int32.Parse(input[6].ToString()) * 5;
+            int digit8 = Int32.Parse(input[7].ToString()) * 4;
+            int digit9 = Int32.Parse(input[8].ToString()) * 3;
+            int digit10 = Int32.Parse(input[9].ToString());
 
-            //Split into char array and convert to int
-
-            //x weight then add values
-
-            //Devide by 12 and work remains
-
-            //12 - remains
+            int sum = digit1 + digit2 + digit3 + digit4 + digit5 + digit6 + digit7 + digit8 + digit9;
+            sum %= 12;
+            sum = 12 - sum;
+         
+            if (sum == 10 || sum == 12)
+            {
+                return true;
+            }
+            if (sum == 11 && digit10 == 0)
+            {
+                return true;
+            }
+            if(sum == digit10)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+           
+            
+            
 
             //if final no = 10 or 12 return invalid
             //if final no = 11 and userinput[9] == 0 return valid
             //if final no = userinput[9] return valid
+           
         }
 
 
