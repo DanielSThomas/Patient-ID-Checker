@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace DanielSThomasCodingExercise
 {
@@ -15,6 +17,9 @@ namespace DanielSThomasCodingExercise
         //Variables
         private string userInput;
       
+        
+
+
 
         //Components
         public MainForm()
@@ -24,25 +29,26 @@ namespace DanielSThomasCodingExercise
   
         private void BtnManualInput_Click(object sender, EventArgs e)
         {
-            ValidateID();
+            userInput = txtManualInput.Text;
+            ValidateID(userInput);
         }
       
         private void BtnAutoInput_Click(object sender, EventArgs e)
         {
-                    
+            LoadJsonData();
         }
 
         //Methods
-        private void ValidateID()
+        private void ValidateID(string input)
         {
-            userInput = txtManualInput.Text;
+           
 
-            if(userInput.Length != 10)
+            if(input.Length != 10)
             {                
                 ManualOutput(false, "ID must be 10 digits long");
                 return;
             }
-            if(CheckforDuplicates(userInput) > 9)
+            if(CheckforDuplicates(input) > 9)
             {            
                 ManualOutput(false, "ID has too many duplicate digits");
                 return;
@@ -51,7 +57,7 @@ namespace DanielSThomasCodingExercise
             {
                 try
                 {
-                    long patientID = Int64.Parse(userInput); //Convert string into numbers
+                    long patientID = Int64.Parse(input); //Convert string into numbers
                     if(patientID < 0) //Check to prevent negitive values
                     {                      
                         ManualOutput(false, "Invalid Characters");
@@ -65,7 +71,7 @@ namespace DanielSThomasCodingExercise
                     return;
                 }
 
-                if(ValidationAlgorithm(userInput) == true)
+                if(ValidationAlgorithm(input) == true)
                 {
                     ManualOutput(true, "Valid ID");
                 }
@@ -77,6 +83,59 @@ namespace DanielSThomasCodingExercise
             }
           
         }
+
+
+
+        private bool AutomaticValidateID(string input)
+        {
+
+            if (input.Length != 10)
+            {              
+                return false;
+            }
+            if (CheckforDuplicates(input) > 9)
+            {              
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    long patientID = Int64.Parse(input); //Convert string into numbers
+                    if (patientID < 0) //Check to prevent negitive values
+                    {                       
+                        return false;
+                    }
+                }
+                catch (FormatException) //String is non-numeric
+                {                
+                    return false;
+                }
+
+                if (ValidationAlgorithm(input) == true)
+                {                    
+                    return true;
+                }
+                else
+                {                
+                    return false;
+                }
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
         private int CheckforDuplicates(string input)
         {
             int duplicateCount = 0;
@@ -135,7 +194,6 @@ namespace DanielSThomasCodingExercise
                       
         }
 
-
         private void ManualOutput(bool input,string message) //Visual feedback to indicate ID as valid or invalid
         {
             if(input == true)
@@ -148,5 +206,53 @@ namespace DanielSThomasCodingExercise
                 MessageBox.Show(message);
             }
         }
+
+
+        private void LoadJsonData()
+        {
+            MessageBox.Show("Select the patient file to open");
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "Json files (*.json)|*.json|Text files (*.txt)|*.txt";
+            
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+
+                using (StreamReader r = new StreamReader(filePath))
+                {
+                    string json = r.ReadToEnd();
+                    List<string> patientIDs = JsonConvert.DeserializeObject<List<string>>(json);
+
+                    int validScore = 0;
+                    int inValidScore = 0;
+
+
+                    foreach(string ID in patientIDs)
+                    {
+                       if (AutomaticValidateID(ID) == true)
+                        {
+                            validScore ++;
+                        }
+                        else
+                        {
+                            inValidScore++;
+                        }
+                       
+
+                    }
+                    MessageBox.Show(validScore + " Valid " + inValidScore + " InValid ");
+                    //Show scores
+                }
+
+
+            }
+
+            
+        }
+            
+
     }
 }
