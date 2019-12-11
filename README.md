@@ -5,7 +5,7 @@ Prerequisites-
 - Newtonsoft.Json
 
 Usage-
-- Load sln and in visual studio
+- Load sln with visual studio
 - Add Newtonsoft.Json though Manage NuGet packages
 - Start project
 - Input Patient ID in maunal ID checker or
