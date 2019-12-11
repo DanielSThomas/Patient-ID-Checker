@@ -38,28 +38,27 @@ namespace DanielSThomasCodingExercise
             userInput = txtManualInput.Text;
 
             if(userInput.Length != 10)
-            {
-                
-                ManualOutput(false, "Patient ID must be 10 digits long");
+            {                
+                ManualOutput(false, "ID must be 10 digits long");
                 return;
             }
             if(CheckforDuplicates(userInput) > 9)
             {            
-                ManualOutput(false, "Patient ID has too many duplicate digits");
+                ManualOutput(false, "ID has too many duplicate digits");
                 return;
             }
             else
             {
                 try
                 {
-                    long patientID = Int64.Parse(userInput);
-                    if(patientID < 0)
+                    long patientID = Int64.Parse(userInput); //Convert string into numbers
+                    if(patientID < 0) //Check to prevent negitive values
                     {                      
                         ManualOutput(false, "Invalid Characters");
                         return;
                     }
                 }
-                catch(FormatException)
+                catch(FormatException) //String is non-numeric
                 {
                     
                     ManualOutput(false, "Invalid Characters");
@@ -70,16 +69,13 @@ namespace DanielSThomasCodingExercise
                 {
                     ManualOutput(true, "Valid ID");
                 }
-                else
+                else 
                 {
                     ManualOutput(false, "ID Failled Advanced Validation Check");
                 }
                
             }
-
-           
-
-
+          
         }
         private int CheckforDuplicates(string input)
         {
@@ -91,7 +87,7 @@ namespace DanielSThomasCodingExercise
             char[] charArray = input.ToCharArray();
 
 
-            foreach(char ch in charArray)
+            foreach(char ch in charArray) //Compare every character to the first and count duplicates
             {
                 if (ch == firstChar)
                 {
@@ -136,18 +132,11 @@ namespace DanielSThomasCodingExercise
             {
                 return false;
             }
-           
-            
-            
-
-            //if final no = 10 or 12 return invalid
-            //if final no = 11 and userinput[9] == 0 return valid
-            //if final no = userinput[9] return valid
-           
+                      
         }
 
 
-        private void ManualOutput(bool input,string message)
+        private void ManualOutput(bool input,string message) //Visual feedback to indicate ID as valid or invalid
         {
             if(input == true)
             {
