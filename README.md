@@ -5,6 +5,8 @@ Prerequisites-
 - Newtonsoft.Json
 
 Usage-
-- Load sln and Build project in visual studio
+- Load sln and in visual studio
+- Add Newtonsoft.Json though Manage NuGet packages
+- Start project
 - Input Patient ID in maunal ID checker or
-- Load PatientDate json to batch check.
+- Load Patient Data json to batch check.
