@@ -17,10 +17,7 @@ namespace DanielSThomasCodingExercise
         //Variables
         private string userInput;
       
-        
-
-
-
+       
         //Components
         public MainForm()
         {
@@ -84,8 +81,6 @@ namespace DanielSThomasCodingExercise
           
         }
 
-
-
         private bool AutomaticValidateID(string input)
         {
 
@@ -124,17 +119,6 @@ namespace DanielSThomasCodingExercise
             }
 
         }
-
-
-
-
-
-
-
-
-
-
-
 
         private int CheckforDuplicates(string input)
         {
@@ -207,7 +191,6 @@ namespace DanielSThomasCodingExercise
             }
         }
 
-
         private void LoadJsonData()
         {
             MessageBox.Show("Select the patient file to open");
@@ -243,7 +226,19 @@ namespace DanielSThomasCodingExercise
                        
 
                     }
-                    MessageBox.Show(validScore + " Valid " + inValidScore + " InValid ");
+
+                    int total = validScore + inValidScore;
+
+                    if(inValidScore > 0)
+                    {
+                        lblAutoOutput.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        lblAutoOutput.ForeColor = Color.Green;
+                    }
+
+                    lblAutoOutput.Text = ( validScore + "/" + total + " Valid" );
                     //Show scores
                 }
 

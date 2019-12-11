@@ -108,13 +108,13 @@
             // 
             // lblAutoOutput
             // 
-            this.lblAutoOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAutoOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAutoOutput.ForeColor = System.Drawing.Color.Red;
-            this.lblAutoOutput.Location = new System.Drawing.Point(191, 222);
+            this.lblAutoOutput.Location = new System.Drawing.Point(163, 222);
             this.lblAutoOutput.Name = "lblAutoOutput";
-            this.lblAutoOutput.Size = new System.Drawing.Size(147, 29);
+            this.lblAutoOutput.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblAutoOutput.Size = new System.Drawing.Size(175, 29);
             this.lblAutoOutput.TabIndex = 7;
-            this.lblAutoOutput.Text = "1/5 Valid IDs";
             // 
             // MainForm
             // 
